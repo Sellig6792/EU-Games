@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>EU-Games - Choisissez un niveau</title>
+</head>
+<body>
+    {% set game = url_for(game) %}
+    <button onclick="rgl('{{ game }}', 0)">Facile</button>
+    <button onclick="rgl('{{ game }}', 1)">Moyen</button>
+    <button onclick="rgl('{{ game }}', 2)">Dificile</button>
+
+    <script src="{{ url_for('games.static', filename='level_choice.js')}}"></script>
+</body>
+</html>
