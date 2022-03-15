@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.2/underscore-umd-min.js"></script>
+    <meta name="choices_number" content="{{ choices_number }}">
+    <meta name="game" content="{{ game }}">
+    <meta name="answers_url" content="{{ url_for('games.static', filename='answers.json') }}">
+</head>
+<body>
+
+
+<script src="{{ url_for('games.static', filename='capitals.js') }}"></script>
+</body>
+</html>

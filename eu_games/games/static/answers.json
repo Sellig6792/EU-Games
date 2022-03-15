@@ -1,0 +1,31 @@
+{
+  "CAPITALS": {
+    "Allemagne": "Berlin",
+    "Autriche": "Viennes",
+    "Belgique": "Bruxelles",
+    "Bulgarie": "Sofia",
+    "Chypre": "Nicosie",
+    "Croatie": "Zagreb",
+    "Danemark": "Copenhague",
+    "Espagne": "Madrid",
+    "Estonie": "Tallinn",
+    "Finlande": "Helsinki",
+    "France": "Paris",
+    "Grèce": "Athènes",
+    "Hongrie": "Budapest",
+    "Irlande": "Dublin",
+    "Italie": "Rome",
+    "Lettonie": "Riga",
+    "Lituanie": "Vilnius",
+    "Grand-Duché du Luxembourg": "Luxembourg",
+    "Malte": "La Valette",
+    "Pays-Bas": "Amsterdam",
+    "Pologne": "Varsovie",
+    "Portugal": "Lisbonne",
+    "Roumanie": "Bucarest",
+    "Slovaquie": "Bratislava",
+    "Slovénie": "Ljubljana",
+    "Suède": "Stockholm",
+    "République Tchèque": "Prague"
+  }
+}

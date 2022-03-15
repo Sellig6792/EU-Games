@@ -1,0 +1,30 @@
+/*
+Blue:   #003399
+Yellow: #FFCC00
+*/
+
+.box-info {
+    width: 300px;
+    margin: 50px auto;
+    background: #003399;
+    background-color: #003399;
+    padding: 20px;
+    text-align: center;
+    font-weight: 900;
+    color: #fff;
+    font-family: arial;
+    position: relative;
+}
+
+.box-info:after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 16px;
+    left:-27px;
+    border: 15px solid transparent;
+    vertical-align: middle;
+    border-right-color: #003399;
+}
