@@ -9,8 +9,10 @@
     <meta name="answers_url" content="{{ url_for('games.static', filename='answers.json') }}">
 </head>
 <body>
-
-
-<script src="{{ url_for('games.static', filename='capitals.js') }}"></script>
+    <p id="country"></p>
+    <div id="answers-div">
+        
+    </div>
+    <script src="{{ url_for('games.static', filename='capitals.js') }}"></script>
 </body>
 </html>
