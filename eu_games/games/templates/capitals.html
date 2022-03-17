@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.2/underscore-umd-min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('games.static', filename='games.css')}}">
     <meta name="choices_number" content="{{ choices_number }}">
-    <meta name="game" content="{{ game }}">
+    <meta name="game_answers_key" content="{{ game_answers_key }}">
     <meta name="answers_url" content="{{ url_for('games.static', filename='answers.json') }}">
 </head>
 <body>
-    <p id="country"></p>
+    <p id="question"></p>
     <div id="answers-div">
-        
+
     </div>
     <script src="{{ url_for('games.static', filename='capitals.js') }}"></script>
 </body>
