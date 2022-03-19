@@ -39,6 +39,7 @@ function createAnswersButtons(question, questions, answers, todo_questions) {
 function createAnswerInput(question, answers, todo_questions) {
     let answer_input = document.createElement('input');
     let answer_submit = document.createElement('input');
+    let good_answer = document.createElement('p');
     answer_input.id = 'answer-input';
     answer_input.placeholder = "Entrez la réponse";
     answer_input.addEventListener('keyup', event => {
@@ -47,15 +48,22 @@ function createAnswerInput(question, answers, todo_questions) {
             document.getElementById('answer-submit').click();
         }
     })
+
     answer_submit.type = 'submit';
-    answer_submit.value = "OK";
+    answer_submit.value = ">";
     answer_submit.id = 'answer-submit';
     answer_submit.onclick = function () {
-        checkAnswer(document.getElementById('answer-input').value == answers[question], todo_questions, bg = false);
+        checkAnswer(document.getElementById('answer-input').value == answers[question], todo_questions);
         document.getElementById('answer-submit').remove();
     }
+
+    good_answer.id = 'good-answer';
+    good_answer.textContent = answers[question];
+    good_answer.style.display = 'none';
+    good_answer.style.color = '#e0e0e0';
     answers_div.appendChild(answer_input);
     answers_div.appendChild(answer_submit);
+    answers_div.appendChild(good_answer);
 }
 // Génère une nouvelle question
 function newQuestion(questions, todo_questions, answers) {
@@ -66,6 +74,8 @@ function newQuestion(questions, todo_questions, answers) {
     document.querySelectorAll('.answers-options').forEach(e => e.remove());
     document.querySelectorAll('.answers-sub-div').forEach(e => e.remove());
     document.querySelectorAll('#answer-input').forEach(e => e.remove());
+    document.querySelectorAll('#good-answer').forEach(e => e.remove());
+    answers_div.style.backgroundColor = 'unset';
 
     let question = _.sample(todo_questions);
     todo_questions = _.without(todo_questions, question);
@@ -79,22 +89,51 @@ function newQuestion(questions, todo_questions, answers) {
 }
 
 // Vérifie la réponse donnée
-function checkAnswer(good, todo_questions, bg = true) {
+function checkAnswer(good, todo_questions) {
     if (document.getElementById('next-button') != null) { return; }
+    if (choices_number == 0) {
+        let answer_input = document.getElementById('answer-input');
+        answer_input.style.borderRadius = '40px';
+        answer_input.style.width = '100%';
+        answer_input.style.borderWidth = '0';
+        answer_input.disabled = true;
+        answer_input.style.color = '#e0e0e0';
+        answers_div.style.height = '200px';
+    } else if (choices_number == 4) {
+        answers_div.style.height = '502px';
+    } else if (choices_number == 2) {
+        answers_div.style.height =  '248px';
+    }
 
     if (good) {
         score += 1;
-        alert(score);
-        if (bg) {
+        if (choices_number == 0) {
+            document.getElementById('answer-input').style.background = '#40ad11';
+        } else {
             document.getElementById('good-answer').style.background = '#40ad11';
+            document.getElementById('good-answer').style.color = '#e0e0e0';
         }
-    } else if (bg && good === false) {
-        document.getElementById('good-answer').style.background = '#40ad11';
-        document.querySelectorAll('.bad-answers').forEach(element => { element.style.background = '#bf1900'; })
+    } else {
+        let good_answer = document.getElementById('good-answer');
+        answers_div.style.backgroundColor = '#bf1900';
+
+        if (choices_number == 0) {
+            let answer_input = document.getElementById('answer-input');
+            answer_input.style.background = '#bf1900';
+            if (answer_input.value == '') { answer_input.value = ' '; }
+            good_answer.style.display = 'unset';
+            good_answer.style.fontSize = '80px';
+            good_answer.style.fontFamily = '\'Fredoka\', sans-serif';
+
+        } else {
+            good_answer.style.backgroundColor = '#40ad11';
+            document.querySelectorAll('.bad-answers').forEach(e => { e.style.background = '#bf1900'; });
+            document.querySelectorAll('.answers-options').forEach(e => { e.style.color = '#e0e0e0'; });
+        }
     }
     let next_button = document.createElement('button');
     next_button.id = 'next-button';
-    next_button.textContent = "Continuer";
+    next_button.textContent = "Continuer →";
     next_button.onclick = function () { next(todo_questions) };
 
     document.getElementById('answers-div').appendChild(next_button)
