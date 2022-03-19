@@ -1,0 +1,85 @@
+/*
+White / Blanc : #e0e0e0
+Green / Vert  : #40ad11
+Red / Rouge   : #bf1900
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@450&display=swap');
+
+* {
+    text-align: center;
+}
+
+#question {
+    font-size: 8vh;
+    font-family: 'Fredoka', sans-serif;
+
+}
+
+#answers-div {
+    width: 83%;
+    border-radius: 50px;
+    margin: auto;
+}
+
+#answer-input {
+    width: 85%;
+    height: 100px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 60px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-color: black;
+    border-right: none;
+
+    padding-right: 0;
+    padding-left: 0;
+    float: left;
+}
+
+#answer-input:focus {
+    outline: none;
+}
+
+#answer-submit {
+    width: calc(15% - 2px);
+    height: 106px;
+    font-size: 60px;
+
+    border-color: black;
+    border-left: none;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    font-family: 'Fredoka', sans-serif;
+
+    padding-right: 0;
+    padding-left: 0;
+    float: right;
+}
+
+.answers-options {
+    width: 100%;
+    font-size: 100px;
+    border-radius: 50px;
+    font-family: 'Fredoka', sans-serif;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+}
+
+.answers-sub-div {
+    margin-bottom: 4px;
+}
+
+#next-button {
+    background-color: #0253b0;
+    color: #e0e0e0;
+    width: 90vw;
+    position: absolute;
+    bottom: 3vh;
+    left: 5vw;
+    font-size: 90px;
+    border-radius: 75px;
+    font-family: 'Fredoka', sans-serif;
+
+}

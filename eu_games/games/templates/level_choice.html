@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>EU-Games - Choisissez un niveau</title>
+    <link rel="stylesheet" href="{{ url_for('games.static', filename='level_choice.css')}}">
+</head>
+<body>
+    {% set game = url_for(game) %}
+    <button onclick="rgl('{{ game }}', 2)">Facile</button>
+    <div id="box-info-easy" class="box-info">Choisissez parmis 2 capitales</div>
+    <button onclick="rgl('{{ game }}', 4)">Normal</button>
+    <div id="box-info-normal" class="box-info">Choisissez parmis 4 capitales</div>
+    <button onclick="rgl('{{ game }}', 0)">Difficile</button>
+    <div id="box-info-hard" class="box-info">Entrez le nom de la capitale</div>
+
+
+    <script src="{{ url_for('games.static', filename='level_choice.js')}}"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.2/underscore-umd-min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('games.static', filename='games.css')}}">
+    <meta name="choices_number" content="{{ choices_number }}">
+    <meta name="game_answers_key" content="{{ game_answers_key }}">
+    <meta name="answers_url" content="{{ url_for('games.static', filename='answers.json') }}">
+    <meta name="games_url" content="{{ url_for('games.index') }}">
+</head>
+<body>
+    <p id="question" class="flex-font"></p>
+
+    <div id="answers-div"></div>
+    <script src="{{ url_for('games.static', filename='capitals.js') }}"></script>
+</body>
+</html>
