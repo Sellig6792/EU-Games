@@ -1,6 +1,7 @@
 const answers_url = document.querySelector('meta[name="answers_url"]').content;
 const choices_number = parseInt(document.querySelector('meta[name="choices_number"]').content);
 const game_answers_key = document.querySelector('meta[name="game_answers_key"]').content;
+const redirect_to_games = function () { document.location.href = document.querySelector('meta[name="games_url"]').content; }
 const p_question = document.getElementById('question');
 const answers_div = document.getElementById('answers-div');
 let score = 0;
@@ -69,6 +70,7 @@ function createAnswerInput(question, answers, todo_questions) {
 function newQuestion(questions, todo_questions, answers) {
     if (todo_questions.length === 0) {
         alert(`Score de ${score}/27`)
+        redirect_to_games();
     }
 
     document.querySelectorAll('.answers-options').forEach(e => e.remove());
