@@ -57,7 +57,7 @@ function createAnswerInput(question, answers, todo_questions) {
     answer_submit.value = ">";
     answer_submit.id = 'answer-submit';
     answer_submit.onclick = function () {
-        checkAnswer(document.getElementById('answer-input').value == answers[question], todo_questions);
+        checkAnswer(document.getElementById('answer-input').value.trim() == answers[question], todo_questions);
         document.getElementById('answer-submit').remove();
     }
 
