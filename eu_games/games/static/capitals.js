@@ -8,7 +8,7 @@ let score = 0;
 
 // Génère les boutons avec les réponses vraies et fausses
 function createAnswersButtons(question, questions, answers, todo_questions) {
-    let bad_answer_question;
+    let bad_answer_question, bad_answer;
     let answer_button = document.createElement('button');
     answer_button.classList.add('answers-options');
     answer_button.id = 'good-answer';
@@ -17,14 +17,17 @@ function createAnswersButtons(question, questions, answers, todo_questions) {
     answer_button.style.border = 'none';
 
     let answers_options = [answer_button];
+    let answers_options_text = [answers[question]];
     while (answers_options.length < choices_number) {
         bad_answer_question = _.sample(questions);
-        if (bad_answer_question != question) {
+        bad_answer = answers[bad_answer_question];
+        if (answers_options_text.indexOf(bad_answer) < 0) {
             answer_button = document.createElement('button');
             answer_button.classList.add('answers-options', 'bad-answers');
             answer_button.onclick = function () { checkAnswer(false, todo_questions) };
             answer_button.style.border = 'none';
-            answer_button.textContent = answers[bad_answer_question];
+            answer_button.textContent = bad_answer;
+            answers_options_text.push(bad_answer);
             answers_options.push(answer_button);
         }
     }
