@@ -5,13 +5,13 @@ games = Blueprint('games', __name__, static_folder='static', static_url_path='st
 
 @games.route('/')
 def index():
-    return "This is an example app"
+    return render_template('index.html')
 
 
 @games.route('/capitals', defaults={'choices_number': None})
 @games.route('/capitals/<int:choices_number>')
 def capitals(choices_number: int = None):
     if choices_number is None:
-        return render_template('level_choice.html', game='games.capitals')
+        return render_template('level_choice.html', game='games.capitals', game_name='Capitales')
     print(choices_number)
     return render_template('capitals.html', choices_number=choices_number, game_answers_key='CAPITALS')

@@ -2,5 +2,6 @@
 env/
 eu_games/games/__pycache__/
 eu_games/__pycache__/
+__pycache__
 Procfile.windows
 .env

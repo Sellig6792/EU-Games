@@ -1,0 +1,50 @@
+html, body {
+    width: calc(100% - 8px);
+    height: 100vh;
+}
+
+.games {
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+}
+
+@media (max-width: 700px) {
+    .games {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .games>* {
+        font-size: 40px;
+        border-radius: 10px;
+    }
+}
+@media (min-width: 700px) {
+    .games {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .games>* {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 1070px) {
+    .games {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .games>* {
+        font-size: 70px;
+    }
+}
+
+.games>* {
+    height: 20vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    text-shadow: 10px 10px 10px black;
+    color: white;
+}
+#capitals {
+    background-image: url("/games/static/capitals_bg.png");
+}
