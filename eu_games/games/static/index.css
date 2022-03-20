@@ -15,7 +15,6 @@ html, body {
     }
     .games>* {
         font-size: 40px;
-        border-radius: 10px;
     }
 }
 @media (min-width: 700px) {
@@ -37,11 +36,15 @@ html, body {
 }
 
 .games>* {
-    height: 20vw;
+    height: 15vh;
+
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
     border: none;
+    border-radius: 10px;
+
     text-shadow: 10px 10px 10px black;
     color: white;
 }
