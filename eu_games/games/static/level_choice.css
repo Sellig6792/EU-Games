@@ -3,28 +3,48 @@ Blue:   #003399
 Yellow: #FFCC00
 */
 
-.box-info {
-    width: 300px;
-    margin: 50px auto;
-    background: #003399;
-    background-color: #003399;
-    padding: 20px;
-    text-align: center;
-    font-weight: 900;
-    color: #fff;
-    font-family: arial;
-    position: relative;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@450&display=swap');
+
+* {
+    font-family: 'Fredoka', sans-serif;
 }
 
-.box-info:after {
-    content: '';
-    display: inline-block;
-    width: 0;
-    height: 0;
+html, body {
+    width: calc(100vw - 8px);
+    height: calc(100vh - 8px);
+}
+
+#level-options {
+    width: 70vw;
+    margin: 0;
     position: absolute;
-    top: 16px;
-    left:-27px;
-    border: 15px solid transparent;
-    vertical-align: middle;
-    border-right-color: #003399;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, calc(-50% + 100px));
+    transform: translate(-50%, calc(-50% - 50px));
+}
+
+button.level-options {
+    width: 100%;
+    font-size: 100px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Fredoka', sans-serif;
+    color: #e2e2e2;
+}
+
+#easy>button {
+    background-color: #00c217;
+}
+
+#normal>button {
+    background-color: #ff9500;
+}
+
+#hard>button {
+    background-color: #941b00;
+}
+
+div>div.level-options:not(#hard) {
+    margin-bottom: 100px;
 }
