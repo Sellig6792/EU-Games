@@ -56,6 +56,8 @@ Red / Rouge   : #bf1900
     padding-right: 0;
     padding-left: 0;
     float: right;
+    -webkit-appearance: none;
+
 }
 
 .answers-options {
@@ -63,7 +65,8 @@ Red / Rouge   : #bf1900
     font-size: 100px;
     border-radius: 50px;
     font-family: 'Fredoka', sans-serif;
-    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    background-color: #efefef;
+
 }
 
 .answers-sub-div {
@@ -74,6 +77,8 @@ Red / Rouge   : #bf1900
     background-color: #0253b0;
     color: #e0e0e0;
     width: 90vw;
+    height: 13vh;
+    border: none;
     position: absolute;
     bottom: 3vh;
     left: 5vw;
@@ -81,4 +86,25 @@ Red / Rouge   : #bf1900
     border-radius: 75px;
     font-family: 'Fredoka', sans-serif;
 
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+    .answers-options {
+        font-size: 70px;
+    }
+    #question {
+        margin-bottom: 25px;
+        margin-top: 25px;
+    }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+    .answers-options {
+        font-size: 80px;
+    }
+    #question {
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
 }

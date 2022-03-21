@@ -103,11 +103,13 @@ function checkAnswer(good, todo_questions) {
         answer_input.style.borderWidth = '0';
         answer_input.disabled = true;
         answer_input.style.color = '#e0e0e0';
+        answer_input.style.webkitTextFillColor = '#e0e0e0';
+        answer_input.style.opacity = '1';
         answers_div.style.height = '200px';
     } else if (choices_number == 4) {
         answers_div.style.height = '502px';
     } else if (choices_number == 2) {
-        answers_div.style.height =  '248px';
+        answers_div.style.height = '248px';
     }
 
     if (good) {
