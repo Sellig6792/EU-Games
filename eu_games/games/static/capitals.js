@@ -4,6 +4,7 @@ const game_answers_key = document.querySelector('meta[name="game_answers_key"]')
 const redirect_to_games = function () { document.location.href = document.querySelector('meta[name="games_url"]').content; }
 const p_question = document.getElementById('question');
 const answers_div = document.getElementById('answers-div');
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 let score = 0;
 
 // Génère les boutons avec les réponses vraies et fausses
@@ -110,6 +111,9 @@ function checkAnswer(good, todo_questions) {
         answers_div.style.height = '502px';
     } else if (choices_number == 2) {
         answers_div.style.height = '248px';
+    }
+    if (isSafari) {
+        answers_div.style.height = (parseInt(answers_div.style.height.substring(0, 3)) + 25).toString() + 'px';
     }
 
     if (good) {
