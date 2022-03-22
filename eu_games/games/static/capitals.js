@@ -112,7 +112,7 @@ function checkAnswer(good, todo_questions) {
     } else if (choices_number == 2) {
         answers_div.style.height = '248px';
     }
-    if (isSafari) {
+    if (isSafari && choices_number === 0) {
         answers_div.style.height = (parseInt(answers_div.style.height.substring(0, 3)) + 25).toString() + 'px';
     }
 
