@@ -43,7 +43,7 @@ function createAnswersButtons(question, questions, answers, todo_questions) {
 // Génère le champs de texte
 function createAnswerInput(question, answers, todo_questions) {
     let answer_input = document.createElement('input');
-    let answer_submit = document.createElement('input');
+    let answer_submit = document.createElement('button');
     let good_answer = document.createElement('p');
     answer_input.id = 'answer-input';
     answer_input.placeholder = "Entrez la réponse";
@@ -55,12 +55,13 @@ function createAnswerInput(question, answers, todo_questions) {
     })
 
     answer_submit.type = 'submit';
-    answer_submit.value = ">";
+    answer_submit.textContent = ">";
     answer_submit.id = 'answer-submit';
     answer_submit.onclick = function () {
         checkAnswer(document.getElementById('answer-input').value.trim() == answers[question], todo_questions);
         document.getElementById('answer-submit').remove();
     }
+    if (isSafari) { answer_submit.style.height = '132px'; }
 
     good_answer.id = 'good-answer';
     good_answer.textContent = answers[question];

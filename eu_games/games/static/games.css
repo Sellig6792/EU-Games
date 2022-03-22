@@ -3,7 +3,6 @@ White / Blanc : #e0e0e0
 Green / Vert  : #40ad11
 Red / Rouge   : #bf1900
 */
-
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@450&display=swap');
 
 * {
@@ -34,6 +33,7 @@ Red / Rouge   : #bf1900
     padding-right: 0;
     padding-left: 0;
     float: left;
+    -webkit-appearance: none;
 }
 
 #answer-input:focus {
@@ -44,7 +44,7 @@ Red / Rouge   : #bf1900
     width: calc(15% - 2px);
     height: 106px;
     font-size: 60px;
-
+    background-color: #efefef;
     border-color: black;
     border-left: none;
     padding-left: 2px;
