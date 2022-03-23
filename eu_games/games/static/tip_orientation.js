@@ -1,7 +1,8 @@
 /* Conseil de tenir l'appareil verticalement */
 function onResizeEvent() {
-    if (window.innerHeight < window.innerWidth) {
+    if (window.innerHeight + 100 < window.innerWidth) {
         alert("Il est conseillé de tenir l'appareil à la verticale.");
+        console.log(window.innerWidth);
     }
 }
 
