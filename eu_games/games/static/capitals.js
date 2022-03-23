@@ -1,19 +1,52 @@
-const answers_url = document.querySelector('meta[name="answers_url"]').content;
 const choices_number = parseInt(document.querySelector('meta[name="choices_number"]').content);
 const game_answers_key = document.querySelector('meta[name="game_answers_key"]').content;
 const redirect_to_games = function () { document.location.href = document.querySelector('meta[name="games_url"]').content; }
 const p_question = document.getElementById('question');
 const answers_div = document.getElementById('answers-div');
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+const all_answers = {
+    "CAPITALS": {
+        "Allemagne": "Berlin",
+        "Autriche": "Vienne",
+        "Belgique": "Bruxelles",
+        "Bulgarie": "Sofia",
+        "Chypre": "Nicosie",
+        "Croatie": "Zagreb",
+        "Danemark": "Copenhague",
+        "Espagne": "Madrid",
+        "Estonie": "Tallinn",
+        "Finlande": "Helsinki",
+        "France": "Paris",
+        "Grèce": "Athènes",
+        "Hongrie": "Budapest",
+        "Irlande": "Dublin",
+        "Italie": "Rome",
+        "Lettonie": "Riga",
+        "Lituanie": "Vilnius",
+        "Grand-Duché du Luxembourg": "Luxembourg",
+        "Malte": "La Valette",
+        "Pays-Bas": "Amsterdam",
+        "Pologne": "Varsovie",
+        "Portugal": "Lisbonne",
+        "Roumanie": "Bucarest",
+        "Slovaquie": "Bratislava",
+        "Slovénie": "Ljubljana",
+        "Suède": "Stockholm",
+        "République Tchèque": "Prague"
+    }
+}
+const answers = all_answers[game_answers_key];
+const questions = Object.keys(answers);
+let todo_questions = _.shuffle(questions);
 let score = 0;
 
 // Génère les boutons avec les réponses vraies et fausses
-function createAnswersButtons(question, questions, answers, todo_questions) {
+function createAnswersButtons(question) {
     let bad_answer_question, bad_answer;
     let answer_button = document.createElement('button');
     answer_button.classList.add('answers-options');
     answer_button.id = 'good-answer';
-    answer_button.onclick = function () { checkAnswer(true, todo_questions) };
+    answer_button.onclick = function () { checkAnswer(true) };
     answer_button.textContent = answers[question];
     answer_button.style.border = 'none';
 
@@ -25,7 +58,7 @@ function createAnswersButtons(question, questions, answers, todo_questions) {
         if (answers_options_text.indexOf(bad_answer) < 0) {
             answer_button = document.createElement('button');
             answer_button.classList.add('answers-options', 'bad-answers');
-            answer_button.onclick = function () { checkAnswer(false, todo_questions) };
+            answer_button.onclick = function () { checkAnswer(false) };
             answer_button.style.border = 'none';
             answer_button.textContent = bad_answer;
             answers_options_text.push(bad_answer);
@@ -41,7 +74,7 @@ function createAnswersButtons(question, questions, answers, todo_questions) {
 }
 
 // Génère le champs de texte
-function createAnswerInput(question, answers, todo_questions) {
+function createAnswerInput(question) {
     let answer_input = document.createElement('input');
     let answer_submit = document.createElement('button');
     let good_answer = document.createElement('p');
@@ -72,7 +105,7 @@ function createAnswerInput(question, answers, todo_questions) {
     answers_div.appendChild(good_answer);
 }
 // Génère une nouvelle question
-function newQuestion(questions, todo_questions, answers) {
+function newQuestion() {
     if (todo_questions.length === 0) {
         alert(`Score de ${score}/27`)
         redirect_to_games();
@@ -89,14 +122,14 @@ function newQuestion(questions, todo_questions, answers) {
 
     p_question.textContent = question;
     if (choices_number > 1) {
-        createAnswersButtons(question, questions, answers, todo_questions);
+        createAnswersButtons(question);
     } else {
-        createAnswerInput(question, answers, todo_questions);
+        createAnswerInput(question);
     }
 }
 
 // Vérifie la réponse donnée
-function checkAnswer(good, todo_questions) {
+function checkAnswer(good) {
     if (document.getElementById('next-button') != null) { return; }
     if (choices_number == 0) {
         let answer_input = document.getElementById('answer-input');
@@ -146,26 +179,18 @@ function checkAnswer(good, todo_questions) {
     let next_button = document.createElement('button');
     next_button.id = 'next-button';
     next_button.textContent = "Continuer →";
-    next_button.onclick = function () { next(todo_questions) };
+    next_button.onclick = function () { next() };
 
     document.getElementById('answers-div').appendChild(next_button)
 }
 
-function next(todo_questions) {
+function next() {
     document.getElementById('next-button').remove();
-    fetch(answers_url).then(resp => { if (resp.ok) { return resp.json() } }).then(answers => {
-        answers = answers[game_answers_key];
-        const questions = Object.keys(answers);
-        newQuestion(questions, todo_questions, answers);
-    })
+
+    newQuestion();
+
 }
 
-fetch(answers_url).then(resp => { if (resp.ok) { return resp.json() } }).then(answers => {
 
-    answers = answers[game_answers_key];
-    const questions = Object.keys(answers);
-    let todo_questions = _.shuffle(questions);
 
-    newQuestion(questions, todo_questions, answers);
-
-})
+newQuestion();
