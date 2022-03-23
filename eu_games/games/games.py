@@ -14,4 +14,5 @@ def capitals(choices_number: int = None):
     if choices_number is None:
         return render_template('level_choice.html', game='games.capitals', game_name='Capitales')
     print(choices_number)
-    return render_template('capitals.html', choices_number=choices_number, game_answers_key='CAPITALS')
+    return render_template('capitals.html', choices_number=choices_number, game_answers_key='CAPITALS',
+                           game_name='Capitales')
